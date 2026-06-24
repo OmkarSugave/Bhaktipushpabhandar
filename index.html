@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhakti Pushpa Bhandar | Premium Flower Shop Pune</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Premium Traditional & Modern Flower Shop in Pune (Thergaon & Pimple Saudagar). Buy Wedding Garlands, Bouquets, Torans, Custom Flower arrangements & Event Decorations.">
+  <meta name="keywords" content="Flower Shop Thergaon, Flower Shop Pimple Saudagar, Wedding Garland Pune, Bouquet Shop Pune, Flower Decoration Pune, Bhakti Pushpa Bhandar">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Bhakti Pushpa Bhandar | Flowers For Every Celebration">
+  <meta property="og:description" content="Luxurious floral creations, wedding garlands, garlands, bouquets, and premium decorations in Pune.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="website">
+
+  <!-- CDNs -->
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- AOS Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">
+      <!-- Lotus SVG Logo -->
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="url(#goldGrad)"/>
+        <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="url(#pinkGrad)"/>
+        <path d="M50 40C51 45 55 49 60 50C55 52 52 56 50 63C48 56 45 52 40 50C45 49 49 45 50 40Z" fill="url(#goldGrad)"/>
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E5C158" />
+            <stop offset="100%" stop-color="#AA7C11" />
+          </linearGradient>
+          <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFB5A7" />
+            <stop offset="100%" stop-color="#E75480" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="loader-text">भक्ती पुष्प भांडार</div>
+    </div>
+    <div class="loader-line">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Falling Petals Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Sticky Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand brand-container" href="index.html">
+          <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="url(#goldGradNav)"/>
+            <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="url(#pinkGradNav)"/>
+            <defs>
+              <linearGradient id="goldGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E5C158" />
+                <stop offset="100%" stop-color="#AA7C11" />
+              </linearGradient>
+              <linearGradient id="pinkGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFB5A7" />
+                <stop offset="100%" stop-color="#E75480" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="brand-name">
+            <span class="brand-name-mr">भक्ती पुष्प भांडार</span>
+            <span class="brand-name-en">Bhakti Pushpa Bhandar</span>
+          </div>
+        </a>
+
+        <!-- Hamburger Toggler -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          
+          <!-- Actions -->
+          <div class="nav-actions">
+            <!-- Cart Button -->
+            <button class="btn-cart-trigger" id="btn-cart-trigger" aria-label="Open Cart">
+              <i class="fas fa-shopping-basket"></i>
+              <span class="cart-count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Parallax Hero Section -->
+  <section class="hero-section">
+    <div class="hero-video-container">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1200&q=80">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-flower-blooming-42352-large.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tagline">Flowers For Every Celebration</span>
+      <h1 class="hero-title">Premium Floral Creations For Every Occasion</h1>
+      <p class="hero-subtitle">Wedding Garlands, Bouquets, Torans & Floral Decorations Crafted With Love</p>
+      <div class="hero-buttons">
+        <a href="products.html" class="btn-premium btn-premium-gold">Shop Now</a>
+        <a href="#custom-order-section" class="btn-premium btn-premium-outline">Custom Order</a>
+        <a href="contact.html" class="btn-premium btn-premium-pink">Contact Us</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Teaser About Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=80" alt="Beautiful Flower arrangement" class="img-fluid rounded-4 shadow-lg border-draw-hover">
+            <div class="glass-card position-absolute bottom-0 end-0 p-4 m-3 d-none d-sm-block" style="max-width: 250px;">
+              <h5 class="fw-bold m-0 text-primary">100% Fresh</h5>
+              <p class="text-muted m-0" style="font-size:0.9rem;">Sourced from premium local organic flower growers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+          <span class="section-subtitle">Since 2003</span>
+          <h2 class="section-title text-start">Welcome to Bhakti Pushpa Bhandar</h2>
+          <p class="lead text-muted mb-4">We craft stunning floral works of art, blending rich Indian traditions with contemporary design principles.</p>
+          
+          <div class="row g-4 mb-4">
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center gap-3">
+                <div class="service-icon m-0" style="width:50px; height:50px; font-size:1.2rem;"><i class="fas fa-gem"></i></div>
+                <div>
+                  <h5 class="fw-bold m-0" style="font-size: 1rem;">Premium Craftsmanship</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center gap-3">
+                <div class="service-icon m-0" style="width:50px; height:50px; font-size:1.2rem;"><i class="fas fa-truck-fast"></i></div>
+                <div>
+                  <h5 class="fw-bold m-0" style="font-size: 1rem;">Express Pune Delivery</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <p class="text-muted mb-4">From sacred temple garlands (mala) to luxurious modern wedding bouquets, we handpick every flower to ensure vibrant longevity and heavenly fragrance.</p>
+          <a href="about.html" class="btn-premium btn-premium-outline">Our Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Collections</span>
+        <h2 class="section-title">Fresh Flower Products</h2>
+        <p class="section-header-desc">Explore our handpicked collections of traditional garlands, beautiful bouquets, torans, and event decorations.</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="text-center mb-5" data-aos="fade-up">
+        <button class="product-tab-btn active" data-home-category="all">All Collection</button>
+        <button class="product-tab-btn" data-home-category="garlands">Garlands</button>
+        <button class="product-tab-btn" data-home-category="bouquets">Bouquets</button>
+        <button class="product-tab-btn" data-home-category="torans">Torans</button>
+        <button class="product-tab-btn" data-home-category="decorations">Decorations</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row g-4" id="home-products-grid" data-aos="fade-up" data-aos-delay="100">
+        <!-- Products generated by JS -->
+      </div>
+      
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="products.html" class="btn-premium btn-premium-gold">View Full Catalogue</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Today's Special Section -->
+  <section class="section-padding bg-cream-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Deal of the Day</span>
+        <h2 class="section-title">Today's Special</h2>
+        <p class="section-header-desc">Exclusive designs at special prices, available for a limited time.</p>
+      </div>
+
+      <div class="row justify-content-center" data-aos="zoom-in">
+        <div class="col-lg-10">
+          <div class="special-deal-card glass-card p-5">
+            <div class="row align-items-center">
+              <div class="col-md-5 mb-4 mb-md-0">
+                <div class="position-relative" id="special-media-container">
+                  <img id="special-image-display" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=600&q=80" alt="Special Deal" class="img-fluid rounded-4 shadow border">
+                  <span class="product-badge pulse-badge" id="special-discount-badge">37% OFF</span>
+                </div>
+              </div>
+              <div class="col-md-7 ps-md-5">
+                <span class="product-category">Limited Offer</span>
+                <h3 class="mb-3" id="special-title-display">Signature Golden Lotus Shringar Set</h3>
+                <p class="text-muted mb-4" id="special-desc-display">A gorgeous, limited-edition set of pink lotuses, exotic orchids, and jasmine strings, curated specifically for festive home altars (Pooja setups).</p>
+                
+                <div class="d-flex align-items-baseline gap-3 mb-2">
+                  <h4 class="text-primary fw-bold m-0" id="special-price-display" style="font-size: 2rem;">₹2499</h4>
+                  <span class="text-muted text-decoration-line-through" id="special-old-price-display" style="font-size: 1.2rem;">₹3999</span>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="timer-box" id="special-countdown-timer">
+                  <!-- Injected by JS -->
+                </div>
+
+                <button class="btn-premium btn-premium-gold btn-add-to-cart-premium" id="special-cart-btn" data-product-id="spec-01">
+                  <i class="fas fa-shopping-basket"></i> Add To Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">What We Do</span>
+        <h2 class="section-title">Floral Design Services</h2>
+        <p class="section-header-desc">Complete professional flower decorations and floral styling services for venues across Pune.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1 Wedding Decoration -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-card border-draw-hover">
+            <div class="service-icon"><i class="fas fa-heart"></i></div>
+            <h3 class="service-title">Wedding Decoration</h3>
+            <p class="service-desc">Grand entry arches, mandap structures, stage backdrops, and table settings matching your chosen wedding theme.</p>
+          </div>
+        </div>
+        <!-- 2 Car Decoration -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-card border-draw-hover">
+            <div class="service-icon"><i class="fas fa-car"></i></div>
+            <h3 class="service-title">Car Decoration</h3>
+            <p class="service-desc">Premium and minimalist bonnet arrangements, floral bouquets, net ribbons, and rear panel setups for the bride & groom car.</p>
+          </div>
+        </div>
+        <!-- 3 House Decoration -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-card border-draw-hover">
+            <div class="service-icon"><i class="fas fa-home"></i></div>
+            <h3 class="service-title">House Decoration</h3>
+            <p class="service-desc">Floral decor for Griha Pravesh (Housewarming), Baby Showers, naming ceremonies, and general household celebrations.</p>
+          </div>
+        </div>
+        <!-- 4 Festival Decoration -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card border-draw-hover">
+            <div class="service-icon"><i class="fas fa-om"></i></div>
+            <h3 class="service-title">Festival Decoration</h3>
+            <p class="service-desc">Custom floral themes for Ganesh Chaturthi, Diwali, Navratri, and Gudi Padwa celebrations with marigolds and mango leaves.</p>
+          </div>
+        </div>
+        <!-- 5 Temple Decoration -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-card border-draw-hover">
+            <div class="service-icon"><i class="fas fa-dharmachakra"></i></div>
+            <h3 class="service-title">Temple Decoration</h3>
+            <p class="service-desc">Deity flower shringar, sanctum sanctorum decoration, and floral pillars for temple festivals and spiritual functions.</p>
+          </div>
+        </div>
+        <!-- 6 Event Decoration -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-card border-draw-hover">
+            <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+            <h3 class="service-title">Event Decoration</h3>
+            <p class="service-desc">Floral columns, podium decorations, stage borders, and banquet arrangements for corporate seminars and galas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Flower Design Form Section -->
+  <section class="section-padding bg-cream-dark" id="custom-order-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Your Imagination, Our Creation</span>
+        <h2 class="section-title">Create Your Own Floral Design</h2>
+        <p class="section-header-desc">Upload a reference image or share your concept, and our master florist will bring it to life.</p>
+      </div>
+
+      <div class="custom-order-wrapper" data-aos="fade-up">
+        <form class="custom-order-form" id="custom-flower-order-form">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group-custom">
+                <label for="custom-name" class="form-label-custom">Full Name</label>
+                <input type="text" id="custom-name" class="form-control-custom" placeholder="Enter your name" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group-custom">
+                <label for="custom-mobile" class="form-label-custom">Mobile Number</label>
+                <input type="tel" id="custom-mobile" class="form-control-custom" placeholder="e.g. 9876543210" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group-custom">
+                <label for="custom-occasion" class="form-label-custom">Occasion</label>
+                <select id="custom-occasion" class="form-control-custom" required>
+                  <option value="" disabled selected>Select occasion</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="Anniversary">Anniversary</option>
+                  <option value="Birthday">Birthday</option>
+                  <option value="Festival">Festival</option>
+                  <option value="Pooja / Temple">Pooja / Temple</option>
+                  <option value="Corporate / Event">Corporate / Event</option>
+                  <option value="Custom">Other Custom Design</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group-custom">
+                <label for="custom-date" class="form-label-custom">Delivery Date</label>
+                <input type="date" id="custom-date" class="form-control-custom" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group-custom">
+                <label for="custom-desc" class="form-label-custom">Design Description</label>
+                <textarea id="custom-desc" rows="4" class="form-control-custom" placeholder="Describe layout details, colors, flower preferences, or specifications..." required></textarea>
+              </div>
+            </div>
+            <div class="col-12 mb-4">
+              <label class="form-label-custom">Upload Reference Image (JPG, PNG, WEBP)</label>
+              <div class="file-upload-wrapper" id="upload-box">
+                <input type="file" id="custom-upload-file" class="file-upload-input" accept="image/png, image/jpeg, image/webp">
+                <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                <div class="file-upload-text">Drag & drop or Click to upload reference photo</div>
+                <img id="file-preview-img" class="file-preview" alt="Thumbnail Preview">
+              </div>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn-premium btn-premium-gold px-5 py-3">Submit Custom Request</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Customer Love</span>
+        <h2 class="section-title">Client Reviews</h2>
+        <p class="section-header-desc">Hear what our wonderful customers say about our flowers and decoration services.</p>
+      </div>
+
+      <!-- Testimonial Carousel -->
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="testimonial-card">
+                  <i class="fas fa-quote-left testimonial-quote"></i>
+                  <p class="testimonial-review">"The wedding garlands supplied by Bhakti Pushpa Bhandar were simply spectacular! The red roses were fresh, rich, and fragrant throughout the day. Everyone asked where we got them from. Highly recommend their Thergaon shop!"</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Customer Photo" class="testimonial-avatar">
+                  <h4 class="testimonial-name">Anjali Deshmukh</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="testimonial-card">
+                  <i class="fas fa-quote-left testimonial-quote"></i>
+                  <p class="testimonial-review">"We hired Bhakti Pushpa Bhandar for our home Ganpati decoration in Pimple Saudagar. The marigold and lotus backdrop was designed so elegantly. They set it up in less than 2 hours. Extremely professional and courteous team."</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Customer Photo" class="testimonial-avatar">
+                  <h4 class="testimonial-name">Rahul Shinde</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="testimonial-card">
+                  <i class="fas fa-quote-left testimonial-quote"></i>
+                  <p class="testimonial-review">"Ordered a customized pink rose gold bouquet for my wife's anniversary. It looked exactly like the reference image I uploaded on their website. The pricing is very reasonable for this level of luxury floral design."</p>
+                  <div class="testimonial-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Customer Photo" class="testimonial-avatar">
+                  <h4 class="testimonial-name">Vikram Patil</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width:5%;">
+          <span class="carousel-control-prev-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width:5%;">
+          <span class="carousel-control-next-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic custom order success popup -->
+  <div class="popup-overlay" id="custom-success-popup">
+    <div class="popup-content">
+      <div class="popup-icon"><i class="fas fa-check"></i></div>
+      <h3 class="popup-title">Design Submitted!</h3>
+      <p class="popup-message">Thank you for uploading your custom floral concept. Our branch manager will call you back within 2 hours to discuss specifications and estimate pricing.</p>
+      <button class="btn-premium btn-premium-gold px-4" id="btn-close-popup">Great, Thanks</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and About -->
+        <div class="col-lg-4 col-md-6">
+          <div class="brand-container mb-3">
+            <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="#E5C158"/>
+              <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="#E75480"/>
+            </svg>
+            <div class="brand-name">
+              <span class="brand-name-mr">भक्ती पुष्प भांडार</span>
+              <span class="brand-name-en" style="color:var(--gold);">Bhakti Pushpa Bhandar</span>
+            </div>
+          </div>
+          <p class="footer-description">Creating gorgeous traditional Indian wedding garlands, festive floral setups, and boutique bouquets across Pune since 2003.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919922054573" target="_blank" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h3 class="footer-title">Navigation</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> About Us</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Flower Products</a></li>
+            <li><a href="gallery.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Gallery</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-title">Our Products</h3>
+          <ul class="footer-links">
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Wedding Garlands</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Temple Pooja Mala</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Anniversary Bouquets</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Auspicious Torans</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Custom Flower Orders</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-title">Shop Details</h3>
+          <ul class="footer-links text-white-50">
+            <li class="mb-2"><i class="fas fa-phone-alt me-2 text-primary"></i> <a href="tel:+919922054573">+91 99220 54573</a></li>
+            <li class="mb-2"><i class="fab fa-whatsapp me-2 text-success"></i> <a href="https://wa.me/919922054573" target="_blank">+91 99220 54573</a></li>
+            <li class="mb-2"><i class="fas fa-envelope me-2 text-warning"></i> <a href="mailto:omkarsugave20@gmail.com">omkarsugave20@gmail.com</a></li>
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-danger"></i> Thergaon (near Anand Hospital) & Pimple Saudagar (Dwarka Lords), Pune</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="m-0">&copy; 2026 Bhakti Pushpa Bhandar. All Rights Reserved. Designed with Love. | <a href="admin-login.html">Admin Login</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Animation Library -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Scroll Animation JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- API Configuration -->
+  <script src="js/api-config.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+
+  <!-- Custom order base64 uploader uploader script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const uploadBox = document.getElementById('upload-box');
+      const fileInput = document.getElementById('custom-upload-file');
+      const previewImg = document.getElementById('file-preview-img');
+      const orderForm = document.getElementById('custom-flower-order-form');
+      const successPopup = document.getElementById('custom-success-popup');
+      const closePopupBtn = document.getElementById('btn-close-popup');
+      
+      let base64Image = '';
+      let selectedCustomFile = null;
+
+      if (uploadBox && fileInput) {
+        uploadBox.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            selectedCustomFile = file;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              base64Image = event.target.result;
+              previewImg.src = base64Image;
+              previewImg.style.display = 'block';
+              uploadBox.querySelector('.file-upload-icon').style.display = 'none';
+              uploadBox.querySelector('.file-upload-text').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      if (orderForm) {
+        orderForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('custom-name').value.trim();
+          const mobile = document.getElementById('custom-mobile').value.trim();
+          const occasion = document.getElementById('custom-occasion').value;
+          const deliveryDate = document.getElementById('custom-date').value;
+          const description = document.getElementById('custom-desc').value.trim();
+
+          const saveOrder = (imageSrc) => {
+            const order = {
+              name,
+              mobile,
+              occasion,
+              deliveryDate,
+              description,
+              image: imageSrc,
+              timestamp: Date.now()
+            };
+
+            if (useGoogleSheets) {
+              const payload = {
+                action: "addCustomOrder",
+                order: {
+                  id: 'order-' + Date.now(),
+                  name: name,
+                  phone: mobile,
+                  details: description,
+                  mediaUrl: imageSrc,
+                  timestamp: new Date().toISOString()
+                }
+              };
+              callGoogleScript(payload, () => {
+                showSuccessAndReset();
+              }, (err) => {
+                console.error("Google Sheets custom order save error:", err);
+                alert("Failed to submit custom request to cloud database!");
+              });
+            } else {
+              order.id = 'order-' + Date.now();
+              const orders = JSON.parse(localStorage.getItem('custom_orders')) || [];
+              const localOrder = {
+                id: order.id,
+                name: order.name,
+                phone: order.mobile,
+                details: order.description,
+                mediaUrl: order.image,
+                timestamp: new Date().toISOString()
+              };
+              orders.push(localOrder);
+              try {
+                localStorage.setItem('custom_orders', JSON.stringify(orders));
+                showSuccessAndReset();
+              } catch (err) {
+                alert("Failed to save order locally. File is too large!");
+              }
+            }
+          };
+
+          const showSuccessAndReset = () => {
+            orderForm.reset();
+            if (previewImg) {
+              previewImg.style.display = 'none';
+              uploadBox.querySelector('.file-upload-icon').style.display = 'block';
+              uploadBox.querySelector('.file-upload-text').style.display = 'block';
+            }
+            base64Image = '';
+            selectedCustomFile = null;
+
+            if (successPopup) {
+              successPopup.classList.add('show');
+            }
+          };
+
+          if (selectedCustomFile) {
+            if (useCloudinary) {
+              const submitBtn = orderForm.querySelector('button[type="submit"]');
+              const originalBtnText = submitBtn.textContent;
+              submitBtn.textContent = 'Uploading design...';
+              submitBtn.disabled = true;
+
+              uploadToCloudinary(selectedCustomFile, (url) => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                saveOrder(url);
+              }, (err) => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                alert("Failed to upload reference photo to Cloudinary: " + err);
+              });
+            } else {
+              if (useGoogleSheets) {
+                alert("Custom design file uploads require Cloudinary. Please configure Cloudinary in js/api-config.js, or clear the selected photo and submit detailed descriptions.");
+              } else {
+                saveOrder(base64Image);
+              }
+            }
+          } else {
+            saveOrder(base64Image);
+          }
+        });
+      }
+
+      if (closePopupBtn && successPopup) {
+        closePopupBtn.addEventListener('click', () => {
+          successPopup.classList.remove('show');
+        });
+      }
+
+      // Render homepage products list
+      let activeHomeCategory = 'all';
+      const homeGridContainer = document.getElementById('home-products-grid');
+      const homeTabs = document.querySelectorAll('[data-home-category]');
+
+      function renderHomeCatalog() {
+        if (!homeGridContainer) return;
+        
+        const renderRows = (products) => {
+          localStorage.setItem('products', JSON.stringify(products));
+
+          let filtered = products;
+          if (activeHomeCategory !== 'all') {
+            filtered = filtered.filter(p => p.category === activeHomeCategory);
+          }
+
+          const displayList = filtered.slice(0, 8);
+
+          if (displayList.length === 0) {
+            homeGridContainer.innerHTML = `
+              <div class="col-12 text-center text-muted py-5 glass-card">
+                <i class="fas fa-shopping-basket d-block mb-3" style="font-size:3rem; color:var(--rose-gold-light);"></i>
+                No products found in this category.
+              </div>
+            `;
+            return;
+          }
+
+          let gridHTML = '';
+          displayList.forEach(p => {
+            const isVideo = p.image && (p.image.startsWith('data:video/') || p.image.endsWith('.mp4') || p.image.endsWith('.webm'));
+            const mediaTag = isVideo 
+              ? `<video src="${p.image}" class="product-img" autoplay muted loop playsinline></video>`
+              : `<img src="${p.image}" alt="${p.name}" class="product-img">`;
+
+            gridHTML += `
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="product-card border-draw-hover">
+                  <div class="product-img-wrapper">
+                    ${mediaTag}
+                  </div>
+                  <div class="product-card-body">
+                    <span class="product-category">${p.category}</span>
+                    <h3 class="product-title" title="${p.name}">${p.name}</h3>
+                    <p class="product-description">${p.description}</p>
+                    <div class="product-price-row">
+                      <span class="product-price">₹${p.price} <span class="old-price">₹${p.oldPrice}</span></span>
+                      <button class="btn-add-to-cart" data-product-id="${p.id}" aria-label="Add to Basket">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+          homeGridContainer.innerHTML = gridHTML;
+        };
+
+        if (useGoogleSheets) {
+          fetch(`${apiConfig.googleAppScriptUrl}?action=getProducts`)
+            .then(r => r.json())
+            .then(products => {
+              renderRows(products);
+            })
+            .catch(err => {
+              console.error("Google Sheets catalog load failed:", err);
+              renderRows(JSON.parse(localStorage.getItem('products')) || []);
+            });
+        } else {
+          renderRows(JSON.parse(localStorage.getItem('products')) || []);
+        }
+      }
+
+      renderHomeCatalog();
+
+      homeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          homeTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeHomeCategory = tab.dataset.homeCategory;
+          renderHomeCatalog();
+        });
+      });
+    });
+
+    // Populate Special Product text on page load
+    window.addEventListener('load', () => {
+      const renderSpecial = (special) => {
+        localStorage.setItem('special_product', JSON.stringify(special));
+
+        document.getElementById('special-title-display').textContent = special.name;
+        document.getElementById('special-desc-display').textContent = special.description;
+        document.getElementById('special-price-display').textContent = `₹${special.price}`;
+        document.getElementById('special-old-price-display').textContent = `₹${special.oldPrice}`;
+        document.getElementById('special-cart-btn').dataset.productId = special.id || 'spec-01';
+
+        const mediaContainer = document.getElementById('special-media-container');
+        if (mediaContainer) {
+          const isVideo = special.image && (special.image.startsWith('data:video/') || special.image.endsWith('.mp4') || special.image.endsWith('.webm'));
+          const mediaTag = isVideo 
+            ? `<video src="${special.image}" class="img-fluid rounded-4 shadow border" autoplay muted loop playsinline></video>`
+            : `<img id="special-image-display" src="${special.image}" alt="Special Deal" class="img-fluid rounded-4 shadow border">`;
+          
+          mediaContainer.innerHTML = `
+            ${mediaTag}
+            <span class="product-badge pulse-badge" id="special-discount-badge">${special.discount}</span>
+          `;
+        }
+      };
+
+      if (useGoogleSheets) {
+        fetch(`${apiConfig.googleAppScriptUrl}?action=getSpecial`)
+          .then(r => r.json())
+          .then(special => {
+            if (special && special.name) {
+              renderSpecial(special);
+            } else {
+              const specialCached = JSON.parse(localStorage.getItem('special_product'));
+              if (specialCached) renderSpecial(specialCached);
+            }
+          })
+          .catch(err => {
+            console.error("Google Sheets loading special failed:", err);
+            const specialCached = JSON.parse(localStorage.getItem('special_product'));
+            if (specialCached) renderSpecial(specialCached);
+          });
+      } else {
+        const special = JSON.parse(localStorage.getItem('special_product'));
+        if (special) renderSpecial(special);
+      }
+    });
+  </script>
+</body>
+</html>

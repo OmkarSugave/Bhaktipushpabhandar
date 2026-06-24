@@ -1,0 +1,118 @@
+/* C:\Users\OMKAR\Documents\antigravity\bold-hypatia\css\responsive.css */
+
+/* --- Medium Devices (Tablets, less than 992px) --- */
+@media (max-width: 991.98px) {
+  :root {
+    --glass-blur: blur(8px);
+  }
+
+  .section-padding {
+    padding: 70px 0;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .navbar-collapse {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: var(--box-shadow-medium);
+    border: 1px solid var(--cream-dark);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-link {
+    padding: 10px 0 !important;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-actions {
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .custom-order-form {
+    padding: 30px;
+  }
+}
+
+/* --- Small Devices (Landscape Phones, less than 768px) --- */
+@media (max-width: 767.98px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .cart-drawer {
+    width: 100%;
+    right: -100%;
+  }
+
+  .timer-box {
+    justify-content: center;
+  }
+
+  .testimonial-card {
+    padding: 30px 20px;
+  }
+
+  .map-container {
+    min-height: 300px;
+    margin-top: 30px;
+  }
+}
+
+/* --- Extra Small Devices (Portrait Phones, less than 576px) --- */
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .btn-premium {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .custom-order-form {
+    padding: 20px 15px;
+  }
+
+  .timer-segment {
+    width: 60px;
+    height: 60px;
+  }
+
+  .timer-number {
+    font-size: 1.4rem;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    margin-top: 15px;
+  }
+}

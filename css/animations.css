@@ -1,0 +1,132 @@
+/* C:\Users\OMKAR\Documents\antigravity\bold-hypatia\css\animations.css */
+
+/* --- Loading Lotus Floating --- */
+@keyframes floatLotus {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* --- Loading Line Progress --- */
+@keyframes loadingProgress {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* --- Scroll bounce --- */
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* --- Shine animation (for buttons) --- */
+@keyframes buttonShine {
+  100% {
+    left: 125%;
+  }
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+  transform: skewX(-25deg);
+  z-index: -1;
+  transition: var(--transition-smooth);
+}
+
+.btn-premium:hover::before {
+  animation: buttonShine 0.85s;
+}
+
+/* --- Floating Keyframes for general layout --- */
+@keyframes softFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.floating-accent {
+  animation: softFloat 6s ease-in-out infinite;
+}
+
+/* --- Zoom out effect on page load --- */
+@keyframes heroZoom {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-video-container video {
+  animation: heroZoom 4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --- Custom Pulse for Discount Badges --- */
+@keyframes badgePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(231, 84, 128, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(231, 84, 128, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(231, 84, 128, 0.2);
+  }
+}
+
+.pulse-badge {
+  animation: badgePulse 2s infinite ease-in-out;
+}
+
+/* --- Card Border Drawing Effect --- */
+.border-draw-hover {
+  position: relative;
+}
+
+.border-draw-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  transition: var(--transition-smooth);
+  pointer-events: none;
+}
+
+.border-draw-hover:hover::after {
+  border-color: var(--gold);
+  transform: scale(1.02);
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Bhakti Pushpa Bhandar</title>
+  
+  <!-- CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <style>
+    body {
+      background-color: var(--cream-dark);
+    }
+    .admin-navbar {
+      background: var(--dark-brown);
+      color: var(--white);
+      padding: 15px 0;
+      border-bottom: 2px solid var(--gold);
+    }
+    .admin-navbar .brand-name-mr,
+    .admin-navbar .brand-name-en {
+      color: var(--white);
+    }
+    .admin-navbar .brand-name-en {
+      color: var(--gold);
+    }
+    .dashboard-header {
+      padding: 40px 0;
+      background: var(--white);
+      border-bottom: 1px solid rgba(183, 110, 121, 0.1);
+      margin-bottom: 40px;
+    }
+    .card-stat {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 25px;
+      border: 1px solid rgba(183, 110, 121, 0.15);
+      box-shadow: var(--box-shadow-soft);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .card-stat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--rose-gold);
+      flex-shrink: 0;
+    }
+    .card-stat-number {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--dark-brown);
+    }
+    .card-stat-label {
+      font-size: 0.85rem;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .admin-section {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid rgba(183, 110, 121, 0.1);
+      box-shadow: var(--box-shadow-soft);
+      margin-bottom: 40px;
+    }
+    .admin-section-title {
+      font-size: 1.5rem;
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .admin-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Navbar -->
+  <nav class="admin-navbar">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <a class="brand-container" href="index.html">
+          <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="#E5C158"/>
+            <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="#E75480"/>
+          </svg>
+          <div class="brand-name">
+            <span class="brand-name-mr">भक्ती पुष्प भांडार</span>
+            <span class="brand-name-en">Bhakti Pushpa Bhandar</span>
+          </div>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+          <span class="d-none d-sm-inline text-white-50" style="font-size:0.9rem;">Logged in as: <strong>Admin</strong></span>
+          <button class="btn btn-sm btn-outline-light px-3 py-2" id="btn-admin-logout" style="border-radius:20px;">Logout <i class="fas fa-sign-out-alt ms-1"></i></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Overview Header -->
+  <div class="dashboard-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <h1 class="fw-bold m-0" style="font-size: 2rem;">Management Dashboard</h1>
+          <p class="text-muted m-0">Admin control panel for catalogue inventory, daily specials, and custom florist orders.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="card-stat">
+                <div class="card-stat-icon"><i class="fas fa-boxes"></i></div>
+                <div>
+                  <div class="card-stat-number" id="stat-total-products">0</div>
+                  <div class="card-stat-label">Products</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card-stat">
+                <div class="card-stat-icon"><i class="fas fa-file-upload"></i></div>
+                <div>
+                  <div class="card-stat-number" id="stat-total-orders">0</div>
+                  <div class="card-stat-label">Custom Requests</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- 1 Catalogue Table -->
+      <div class="col-12 mb-4">
+        <div class="admin-section">
+          <h3 class="admin-section-title">Catalogue Products Catalog</h3>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="products-tbody">
+                <!-- Products loaded dynamically by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 Add / Edit form -->
+      <div class="col-lg-7 mb-4">
+        <div class="admin-section" id="form-section-title">
+          <h3 class="admin-section-title" id="form-action-title">Add New Floral Product</h3>
+          <form id="product-form">
+            <div class="row">
+              <div class="col-12 mb-3">
+                <label for="prod-name" class="form-label-custom">Product Title / Name</label>
+                <input type="text" id="prod-name" class="form-control-custom" placeholder="e.g. Wedding Jasmine Varmala" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="prod-price" class="form-label-custom">Discounted Price (₹)</label>
+                <input type="number" id="prod-price" class="form-control-custom" placeholder="e.g. 1500" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="prod-old-price" class="form-label-custom">Original Price (₹)</label>
+                <input type="number" id="prod-old-price" class="form-control-custom" placeholder="e.g. 2000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="prod-category" class="form-label-custom">Category</label>
+                <select id="prod-category" class="form-control-custom" required>
+                  <option value="garlands">Garlands (वरमाला)</option>
+                  <option value="bouquets">Bouquets (बुके)</option>
+                  <option value="torans">Torans (तोरण)</option>
+                  <option value="decorations">Decorations (सजावट)</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="prod-image" class="form-label-custom">Image/Video URL or File Upload</label>
+                <div class="d-flex gap-2">
+                  <input type="text" id="prod-image" class="form-control-custom" placeholder="Paste URL or select file..." required>
+                  <input type="file" id="prod-file" class="d-none" accept="image/*,video/*">
+                  <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('prod-file').click()" style="border-radius:12px;" aria-label="Upload File"><i class="fas fa-upload"></i></button>
+                </div>
+              </div>
+              <div class="col-12 mb-4">
+                <label for="prod-desc" class="form-label-custom">Short Description</label>
+                <textarea id="prod-desc" rows="3" class="form-control-custom" placeholder="Enter short details..." required></textarea>
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn-premium btn-premium-gold" id="btn-submit-product">Save Product</button>
+                <button type="button" class="btn-premium btn-premium-outline d-none" id="btn-cancel-edit">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- 3 Today's Special setting -->
+      <div class="col-lg-5 mb-4">
+        <div class="admin-section">
+          <h3 class="admin-section-title">Manage Today's Special Deal</h3>
+          <form id="special-form">
+            <div class="row">
+              <div class="col-12 mb-3">
+                <label for="spec-name" class="form-label-custom">Deal Title / Name</label>
+                <input type="text" id="spec-name" class="form-control-custom" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="spec-price" class="form-label-custom">Deal Price (₹)</label>
+                <input type="number" id="spec-price" class="form-control-custom" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="spec-old-price" class="form-label-custom">Original Price (₹)</label>
+                <input type="number" id="spec-old-price" class="form-control-custom" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="spec-discount" class="form-label-custom">Discount Badge</label>
+                <input type="text" id="spec-discount" class="form-control-custom" placeholder="e.g. 25% OFF" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="spec-hours" class="form-label-custom">Countdown Timer (Hrs)</label>
+                <input type="number" id="spec-hours" class="form-control-custom" min="1" placeholder="e.g. 24" required>
+              </div>
+              <div class="col-12 mb-3">
+                <label for="spec-image" class="form-label-custom">Image/Video URL or File Upload</label>
+                <div class="d-flex gap-2">
+                  <input type="text" id="spec-image" class="form-control-custom" placeholder="Paste URL or select file..." required>
+                  <input type="file" id="spec-file" class="d-none" accept="image/*,video/*">
+                  <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('spec-file').click()" style="border-radius:12px;" aria-label="Upload File"><i class="fas fa-upload"></i></button>
+                </div>
+              </div>
+              <div class="col-12 mb-4">
+                <label for="spec-desc" class="form-label-custom">Description</label>
+                <textarea id="spec-desc" rows="3" class="form-control-custom" required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-premium btn-premium-pink w-100 justify-content-center">Update Special Offer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- 4 Custom Design orders list -->
+      <div class="col-12 mb-5">
+        <div class="admin-section">
+          <h3 class="admin-section-title">Submitted Custom Floral Design Orders</h3>
+          <div class="row g-4" id="custom-orders-container">
+            <!-- Custom orders loaded by admin.js -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- API Configuration -->
+  <script src="js/api-config.js"></script>
+
+  <!-- CDNs JS -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/admin.js?v=2"></script>
+</body>
+</html>

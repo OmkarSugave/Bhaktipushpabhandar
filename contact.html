@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Bhakti Pushpa Bhandar</title>
+  
+  <!-- Meta Tags -->
+  <meta name="description" content="Get in touch with Bhakti Pushpa Bhandar Pune. Send queries, request wedding floral quotes, or get branch direction maps for Thergaon & Pimple Saudagar.">
+  
+  <!-- CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <style>
+    .subpage-hero {
+      position: relative;
+      height: 40vh;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(45, 27, 30, 0.65), rgba(45, 27, 30, 0.65)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+      background-size: cover;
+      color: var(--white);
+      margin-top: 80px;
+    }
+    .subpage-title {
+      font-size: 2.8rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .breadcrumb-custom {
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px; height:80px;">
+        <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="url(#goldGrad)"/>
+        <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="url(#pinkGrad)"/>
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E5C158" />
+            <stop offset="100%" stop-color="#AA7C11" />
+          </linearGradient>
+          <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFB5A7" />
+            <stop offset="100%" stop-color="#E75480" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="loader-text">भक्ती पुष्प भांडार</div>
+    </div>
+    <div class="loader-line">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Petals Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Sticky Header -->
+  <header class="scrolled">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand brand-container" href="index.html">
+          <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="url(#goldGradNav)"/>
+            <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="url(#pinkGradNav)"/>
+            <defs>
+              <linearGradient id="goldGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E5C158" />
+                <stop offset="100%" stop-color="#AA7C11" />
+              </linearGradient>
+              <linearGradient id="pinkGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFB5A7" />
+                <stop offset="100%" stop-color="#E75480" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="brand-name">
+            <span class="brand-name-mr">भक्ती पुष्प भांडार</span>
+            <span class="brand-name-en">Bhakti Pushpa Bhandar</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-actions">
+            <button class="btn-cart-trigger" id="btn-cart-trigger">
+              <i class="fas fa-shopping-basket"></i>
+              <span class="cart-count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div>
+      <div class="breadcrumb-custom"><a href="index.html">Home</a> &bull; Contact</div>
+      <h1 class="subpage-title">Connect With Us</h1>
+    </div>
+  </section>
+
+  <!-- Contact Form & Details Section -->
+  <section class="section-padding">
+    <div class="container">
+      
+      <div class="row g-5">
+        <!-- Contact Information (Left) -->
+        <div class="col-lg-5" data-aos="fade-right">
+          <span class="section-subtitle">Get In Touch</span>
+          <h2 class="section-title text-start mb-4">Contact Information</h2>
+          <p class="text-muted mb-5">Have an upcoming wedding, ceremony, or custom floral requirement? Leave a message or visit our local Pune outlets directly. We are happy to consult and design for your event.</p>
+          
+          <ul class="contact-info-list">
+            <li class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="contact-info-text">
+                <h4>Call Support</h4>
+                <p><a href="tel:+919922054573">+91 99220 54573</a> (Same for all sites)</p>
+              </div>
+            </li>
+            
+            <li class="contact-info-item">
+              <div class="contact-info-icon" style="color:#25d366;"><i class="fab fa-whatsapp"></i></div>
+              <div class="contact-info-text">
+                <h4>WhatsApp Chat</h4>
+                <p><a href="https://wa.me/919922054573" target="_blank" class="fw-semibold text-success">Click to Chat on WhatsApp</a></p>
+              </div>
+            </li>
+
+            <li class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-info-text">
+                <h4>Email Address</h4>
+                <p><a href="mailto:omkarsugave20@gmail.com">omkarsugave20@gmail.com</a></p>
+              </div>
+            </li>
+
+            <li class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-info-text">
+                <h4>Our Outlets</h4>
+                <p><strong>Thergaon:</strong> Near Anand Hospital, Thergaon, Pune - 411033<br>
+                <a href="https://maps.app.goo.gl/hwNJwF73wgbtTbYD8" target="_blank" class="text-primary small"><i class="fas fa-directions me-1"></i> Open in Maps</a></p>
+                <p><strong>Pimple Saudagar:</strong> Dwarka Lords, Pimple Saudagar, Pune - 411027<br>
+                <a href="https://maps.app.goo.gl/E39PJAa6SJqKGGHn7" target="_blank" class="text-primary small"><i class="fas fa-directions me-1"></i> Open in Maps</a></p>
+              </div>
+            </li>
+
+            <li class="contact-info-item">
+              <div class="contact-info-icon"><i class="far fa-clock"></i></div>
+              <div class="contact-info-text">
+                <h4>Business Hours</h4>
+                <p>Monday - Sunday: 6:00 AM - 10:00 PM</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Form (Right) -->
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="glass-card p-4 p-sm-5">
+            <h3 class="mb-4 fw-bold">Send Message</h3>
+            <form id="contact-query-form">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="contact-name" class="form-label-custom">Name</label>
+                  <input type="text" id="contact-name" class="form-control-custom" placeholder="Your name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="contact-mobile" class="form-label-custom">Mobile Number</label>
+                  <input type="tel" id="contact-mobile" class="form-control-custom" placeholder="Your phone number" required>
+                </div>
+                <div class="col-12 mb-3">
+                  <label for="contact-email" class="form-label-custom">Email Address (Optional)</label>
+                  <input type="email" id="contact-email" class="form-control-custom" placeholder="e.g. client@email.com">
+                </div>
+                <div class="col-12 mb-3">
+                  <label for="contact-subject" class="form-label-custom">Subject</label>
+                  <input type="text" id="contact-subject" class="form-control-custom" placeholder="Subject of query" required>
+                </div>
+                <div class="col-12 mb-4">
+                  <label for="contact-message" class="form-label-custom">Message</label>
+                  <textarea id="contact-message" rows="4" class="form-control-custom" placeholder="Write details here..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-premium btn-premium-gold w-100 justify-content-center">Send Query</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Map Section -->
+  <section class="section-padding bg-cream-dark p-0">
+    <div class="container">
+      <div class="text-center py-4">
+        <span class="section-subtitle">Find Us On Map</span>
+        <h2 class="section-title mb-4">Interactive Branch Locations</h2>
+        <div class="btn-group" role="group" aria-label="Branch Maps">
+          <button type="button" class="btn btn-outline-primary active px-4 py-2" id="btn-map-thergaon" style="border-radius: 30px 0 0 30px; font-family: var(--font-title);">Thergaon (Main)</button>
+          <button type="button" class="btn btn-outline-primary px-4 py-2" id="btn-map-saudagar" style="border-radius: 0 30px 30px 0; font-family: var(--font-title);">Pimple Saudagar</button>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-12">
+          <div class="map-container" style="min-height: 450px; position: relative;">
+            <iframe id="branch-map-iframe" src="https://maps.google.com/maps?q=Anand%20Hospital%20Thergaon%20Pune&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Popup Modal -->
+  <div class="popup-overlay" id="contact-success-popup">
+    <div class="popup-content">
+      <div class="popup-icon"><i class="fas fa-paper-plane"></i></div>
+      <h3 class="popup-title">Message Sent!</h3>
+      <p class="popup-message">Thank you for contacting Bhakti Pushpa Bhandar. Your message has been received. Our representative will contact you shortly on your provided mobile number.</p>
+      <button class="btn-premium btn-premium-gold px-4" id="btn-close-contact-popup">Done</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and About -->
+        <div class="col-lg-4 col-md-6">
+          <div class="brand-container mb-3">
+            <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 15C53 30 65 40 75 42C62 48 55 58 50 80C45 58 38 48 25 42C35 40 47 30 50 15Z" fill="#E5C158"/>
+              <path d="M50 28C52 38 60 45 68 46C58 50 53 58 50 72C47 58 42 50 32 46C40 45 48 38 50 28Z" fill="#E75480"/>
+            </svg>
+            <div class="brand-name">
+              <span class="brand-name-mr">भक्ती पुष्प भांडार</span>
+              <span class="brand-name-en" style="color:var(--gold);">Bhakti Pushpa Bhandar</span>
+            </div>
+          </div>
+          <p class="footer-description">Creating gorgeous traditional Indian wedding garlands, festive floral setups, and boutique bouquets across Pune since 2003.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919922054573" target="_blank" class="footer-social-link"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h3 class="footer-title">Navigation</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> About Us</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Flower Products</a></li>
+            <li><a href="gallery.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Gallery</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-title">Our Products</h3>
+          <ul class="footer-links">
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Wedding Garlands</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Temple Pooja Mala</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Anniversary Bouquets</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Auspicious Torans</a></li>
+            <li><a href="products.html"><i class="fas fa-circle" style="font-size:0.4rem; color:var(--gold);"></i> Custom Flower Orders</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-title">Shop Details</h3>
+          <ul class="footer-links text-white-50">
+            <li class="mb-2"><i class="fas fa-phone-alt me-2 text-primary"></i> <a href="tel:+919922054573">+91 99220 54573</a></li>
+            <li class="mb-2"><i class="fab fa-whatsapp me-2 text-success"></i> <a href="https://wa.me/919922054573" target="_blank">+91 99220 54573</a></li>
+            <li class="mb-2"><i class="fas fa-envelope me-2 text-warning"></i> <a href="mailto:omkarsugave20@gmail.com">omkarsugave20@gmail.com</a></li>
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-danger"></i> Thergaon (near Anand Hospital) & Pimple Saudagar (Dwarka Lords), Pune</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="m-0">&copy; 2026 Bhakti Pushpa Bhandar. All Rights Reserved. Designed with Love. | <a href="admin-login.html">Admin Login</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- API Configuration -->
+  <script src="js/api-config.js"></script>
+
+  <!-- CDNs JS -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+
+  <!-- Contact Form submit script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contact-query-form');
+      const successPopup = document.getElementById('contact-success-popup');
+      const closePopupBtn = document.getElementById('btn-close-contact-popup');
+
+      // Map tabs
+      const btnThergaon = document.getElementById('btn-map-thergaon');
+      const btnSaudagar = document.getElementById('btn-map-saudagar');
+      const mapIframe = document.getElementById('branch-map-iframe');
+
+      if (btnThergaon && btnSaudagar && mapIframe) {
+        btnThergaon.addEventListener('click', () => {
+          btnThergaon.classList.add('active');
+          btnSaudagar.classList.remove('active');
+          mapIframe.src = "https://maps.google.com/maps?q=Anand%20Hospital%20Thergaon%20Pune&t=&z=16&ie=UTF8&iwloc=&output=embed";
+        });
+
+        btnSaudagar.addEventListener('click', () => {
+          btnSaudagar.classList.add('active');
+          btnThergaon.classList.remove('active');
+          mapIframe.src = "https://maps.google.com/maps?q=Dwarka%20Lords%20Pimple%20Saudagar%20Pune&t=&z=16&ie=UTF8&iwloc=&output=embed";
+        });
+      }
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const queryData = {
+            name: document.getElementById('contact-name').value.trim(),
+            phone: document.getElementById('contact-mobile').value.trim(),
+            email: document.getElementById('contact-email').value.trim(),
+            subject: document.getElementById('contact-subject').value.trim(),
+            message: document.getElementById('contact-message').value.trim(),
+            timestamp: new Date().toISOString()
+          };
+
+          const handleSuccess = () => {
+            contactForm.reset();
+            if (successPopup) {
+              successPopup.classList.add('show');
+            }
+          };
+
+          if (useGoogleSheets) {
+            const payload = {
+              action: "addInquiry",
+              inquiry: queryData
+            };
+            callGoogleScript(payload, () => {
+              console.log('Query saved to Google Sheets successfully.');
+              handleSuccess();
+            }, (err) => {
+              console.error('Error saving query to Google Sheets:', err);
+              saveQueryToLocalStorage(queryData);
+              handleSuccess();
+            });
+          } else {
+            saveQueryToLocalStorage(queryData);
+            handleSuccess();
+          }
+        });
+      }
+
+      function saveQueryToLocalStorage(query) {
+        const queries = JSON.parse(localStorage.getItem('contact_queries')) || [];
+        queries.push(query);
+        localStorage.setItem('contact_queries', JSON.stringify(queries));
+      }
+
+      if (closePopupBtn && successPopup) {
+        closePopupBtn.addEventListener('click', () => {
+          successPopup.classList.remove('show');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
