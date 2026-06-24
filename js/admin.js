@@ -3,6 +3,7 @@
 // Global file variables for uploads
 let selectedProductFile = null;
 let selectedSpecialFile = null;
+let selectedGalleryFile = null;
 let editingProductId = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,6 +65,7 @@ function initDashboard() {
   renderProductsTable();
   renderCustomOrdersList();
   loadTodaySpecialForm();
+  renderGalleryTable();
 
   // Setup form submit handlers
   const productForm = document.getElementById('product-form');
@@ -74,6 +76,11 @@ function initDashboard() {
   const specialForm = document.getElementById('special-form');
   if (specialForm) {
     specialForm.addEventListener('submit', handleSpecialFormSubmit);
+  }
+
+  const galleryForm = document.getElementById('gallery-form');
+  if (galleryForm) {
+    galleryForm.addEventListener('submit', handleGalleryFormSubmit);
   }
 
   // Cancel edit button handler
@@ -138,6 +145,27 @@ function initDashboard() {
           } else {
             specImageInput.value = rawBase;
           }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  // Setup gallery file uploader
+  const galFile = document.getElementById('gal-file');
+  const galImageInput = document.getElementById('gal-image');
+  if (galFile && galImageInput) {
+    galFile.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        selectedGalleryFile = file; // Cache file for Cloudinary upload
+        
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const rawBase = event.target.result;
+          compressImage(rawBase, 800, (compressed) => {
+            galImageInput.value = compressed;
+          });
         };
         reader.readAsDataURL(file);
       }
@@ -635,3 +663,187 @@ function compressImage(base64Str, maxWidth, callback) {
     callback(base64Str); // Fallback to raw if error
   };
 }
+
+// --- Gallery Management Implementation ---
+
+const DEFAULT_GALLERY_ITEMS = [
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299563/r6j6mjsxg9sgrlzrpwpa.jpg",
+    title: "Ganesh Chaturthi Floral Backdrop Decoration",
+    category: "festivals"
+  },
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299565/gh3gdrahnwq229aoadcu.jpg",
+    title: "Festive Yellow Marigold Garlands",
+    category: "garlands"
+  },
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299567/lwnh67gyjfuy8xva2sav.jpg",
+    title: "Traditional Rose & White Mogra Varmala",
+    category: "garlands"
+  },
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299569/wukqqutek3iz3esrflvb.jpg",
+    title: "Traditional Marigold Toran with Golden Bells",
+    category: "decorations"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+    title: "Luxury Mandap Wedding Floral Backdrop",
+    category: "weddings"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
+    title: "Premium Rose Gold Bridal Bouquet",
+    category: "bouquets"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1774024872435-97b094b1215f?auto=format&fit=crop&w=800&q=80",
+    title: "Traditional Rose & Mogra Varmala",
+    category: "garlands"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1603566719262-4f3df9f9ce77?auto=format&fit=crop&w=800&q=80",
+    title: "Auspicious Diwali Floral Puja Thali Setup",
+    category: "festivals"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1771613934220-1158b37be523?auto=format&fit=crop&w=800&q=80",
+    title: "Traditional House Entrance Garland Pillars",
+    category: "decorations"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80",
+    title: "Wedding Reception Hall floral decor",
+    category: "weddings"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80",
+    title: "Vibrant Lily & Carnation Bouquet",
+    category: "bouquets"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1760963809680-dbc4b0366948?auto=format&fit=crop&w=800&q=80",
+    title: "Temple Chariot Marigold Garland Strings",
+    category: "garlands"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1605000797439-75a150088d44?auto=format&fit=crop&w=800&q=80",
+    title: "Ganesh Chaturthi Toran and Flower Backdrop",
+    category: "festivals"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1771507057503-80b78ae57e09?auto=format&fit=crop&w=800&q=80",
+    title: "Elegant Car Bonnet Flower Garland Setup",
+    category: "decorations"
+  }
+];
+
+function renderGalleryTable() {
+  const tbody = document.getElementById('gallery-tbody');
+  if (!tbody) return;
+
+  const customItems = JSON.parse(localStorage.getItem('custom_gallery_items')) || [];
+  let rows = '';
+  
+  // Custom items (Deletable)
+  customItems.forEach((item) => {
+    rows += `
+      <tr>
+        <td class="align-middle">
+          <img src="${item.image}" alt="${item.title}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
+        </td>
+        <td class="align-middle fw-semibold">${item.title}</td>
+        <td class="align-middle text-capitalize">${item.category}</td>
+        <td class="align-middle"><span class="badge bg-success">Custom</span></td>
+        <td class="align-middle">
+          <button class="btn btn-sm btn-outline-danger" onclick="deleteGalleryItem('${item.id}')">
+            <i class="fas fa-trash-alt"></i> Delete
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+
+  // Default items (Static System Items)
+  DEFAULT_GALLERY_ITEMS.forEach((item) => {
+    rows += `
+      <tr class="table-light text-muted">
+        <td class="align-middle">
+          <img src="${item.image}" alt="${item.title}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; filter: grayscale(30%); opacity: 0.8;">
+        </td>
+        <td class="align-middle">${item.title}</td>
+        <td class="align-middle text-capitalize">${item.category}</td>
+        <td class="align-middle"><span class="badge bg-secondary">System</span></td>
+        <td class="align-middle">
+          <button class="btn btn-sm btn-outline-secondary" disabled>
+            <i class="fas fa-lock"></i> Locked
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+
+  tbody.innerHTML = rows;
+}
+
+function handleGalleryFormSubmit(e) {
+  e.preventDefault();
+  
+  const title = document.getElementById('gal-title').value.trim();
+  const category = document.getElementById('gal-category').value;
+  const imageVal = document.getElementById('gal-image').value.trim();
+  const btnSubmit = document.getElementById('btn-submit-gallery');
+  const originalText = btnSubmit.textContent;
+
+  const saveItem = (imageUrl) => {
+    let customItems = JSON.parse(localStorage.getItem('custom_gallery_items')) || [];
+    customItems.unshift({
+      id: 'g-' + Date.now(),
+      title,
+      category,
+      image: imageUrl
+    });
+    
+    try {
+      localStorage.setItem('custom_gallery_items', JSON.stringify(customItems));
+      document.getElementById('gallery-form').reset();
+      selectedGalleryFile = null;
+      renderGalleryTable();
+      alert('Gallery image added successfully!');
+    } catch (err) {
+      console.error(err);
+      alert('Failed to save to browser storage! File size limit exceeded. Select a smaller media file.');
+    }
+  };
+
+  if (selectedGalleryFile) {
+    if (useCloudinary) {
+      btnSubmit.textContent = 'Uploading...';
+      btnSubmit.disabled = true;
+      uploadToCloudinary(selectedGalleryFile, (url) => {
+        saveItem(url);
+        btnSubmit.textContent = originalText;
+        btnSubmit.disabled = false;
+      }, (err) => {
+        btnSubmit.textContent = originalText;
+        btnSubmit.disabled = false;
+        alert("Cloudinary upload failed: " + err);
+      });
+    } else {
+      saveItem(imageVal);
+    }
+  } else {
+    saveItem(imageVal || 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80');
+  }
+}
+
+window.deleteGalleryItem = function(itemId) {
+  if (!confirm('Are you sure you want to delete this custom gallery image?')) return;
+  
+  let customItems = JSON.parse(localStorage.getItem('custom_gallery_items')) || [];
+  customItems = customItems.filter(item => item.id !== itemId);
+  localStorage.setItem('custom_gallery_items', JSON.stringify(customItems));
+  renderGalleryTable();
+  alert('Gallery image deleted successfully!');
+};

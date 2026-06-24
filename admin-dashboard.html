@@ -287,6 +287,64 @@
         </div>
       </div>
 
+      <!-- 5 Gallery Manager -->
+      <div class="col-12 mb-5">
+        <div class="admin-section">
+          <h3 class="admin-section-title">Gallery Section Manager</h3>
+          <div class="row">
+            <!-- Gallery Items List -->
+            <div class="col-lg-8 mb-4">
+              <h4 class="h5 mb-3 text-dark-brown">Current Gallery Items</h4>
+              <div class="table-responsive" style="max-height: 450px; overflow-y: auto;">
+                <table class="table table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th style="width: 80px;">Image</th>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Type</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="gallery-tbody">
+                    <!-- Gallery items loaded dynamically by admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Add Gallery Item Form -->
+            <div class="col-lg-4 mb-4">
+              <h4 class="h5 mb-3 text-dark-brown">Add Image to Gallery</h4>
+              <form id="gallery-form">
+                <div class="mb-3">
+                  <label for="gal-title" class="form-label-custom">Image Title</label>
+                  <input type="text" id="gal-title" class="form-control-custom" placeholder="e.g. Red Rose Varmala Display" required>
+                </div>
+                <div class="mb-3">
+                  <label for="gal-category" class="form-label-custom">Category</label>
+                  <select id="gal-category" class="form-control-custom" required>
+                    <option value="weddings">Weddings</option>
+                    <option value="bouquets">Bouquets</option>
+                    <option value="garlands">Garlands</option>
+                    <option value="festivals">Festivals</option>
+                    <option value="decorations">Decorations</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="gal-image" class="form-label-custom">Image URL or File Upload</label>
+                  <div class="d-flex gap-2">
+                    <input type="text" id="gal-image" class="form-control-custom" placeholder="Paste URL or select file..." required>
+                    <input type="file" id="gal-file" class="d-none" accept="image/*">
+                    <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('gal-file').click()" style="border-radius:12px;" aria-label="Upload File"><i class="fas fa-upload"></i></button>
+                  </div>
+                </div>
+                <button type="submit" class="btn-premium btn-premium-gold w-100 justify-content-center" id="btn-submit-gallery">Add to Gallery</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

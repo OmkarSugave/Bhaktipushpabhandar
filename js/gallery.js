@@ -2,6 +2,26 @@
 
 const GALLERY_ITEMS = [
   {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299563/r6j6mjsxg9sgrlzrpwpa.jpg",
+    title: "Ganesh Chaturthi Floral Backdrop Decoration",
+    category: "festivals"
+  },
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299565/gh3gdrahnwq229aoadcu.jpg",
+    title: "Festive Yellow Marigold Garlands",
+    category: "garlands"
+  },
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299567/lwnh67gyjfuy8xva2sav.jpg",
+    title: "Traditional Rose & White Mogra Varmala",
+    category: "garlands"
+  },
+  {
+    image: "https://res.cloudinary.com/dkso3uujn/image/upload/v1782299569/wukqqutek3iz3esrflvb.jpg",
+    title: "Traditional Marigold Toran with Golden Bells",
+    category: "decorations"
+  },
+  {
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
     title: "Luxury Mandap Wedding Floral Backdrop",
     category: "weddings"
@@ -64,8 +84,11 @@ function renderGalleryGrid() {
   const grid = document.getElementById('gallery-grid');
   if (!grid) return;
 
+  const customItems = JSON.parse(localStorage.getItem('custom_gallery_items')) || [];
+  const allItems = [...customItems, ...GALLERY_ITEMS];
+
   let gridHTML = '';
-  GALLERY_ITEMS.forEach((item, index) => {
+  allItems.forEach((item, index) => {
     gridHTML += `
       <div class="col-12 col-sm-6 col-md-4 gallery-item-wrapper" data-category="${item.category}" data-aos="fade-up" data-aos-delay="${index * 50}">
         <div class="product-card border-draw-hover mb-4" style="cursor: pointer;">
