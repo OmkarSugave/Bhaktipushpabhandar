@@ -36,7 +36,10 @@ function initLogin() {
     const user = document.getElementById('username').value.trim();
     const pass = document.getElementById('password').value.trim();
 
-    if (user === 'admin' && pass === 'ganesh12341') {
+    const correctUser = typeof config !== 'undefined' ? config.adminUsername : '';
+    const correctPass = typeof config !== 'undefined' ? config.adminPassword : '';
+
+    if (correctUser && correctPass && user === correctUser && pass === correctPass) {
       localStorage.setItem('admin_logged_in', 'true');
       window.location.href = 'admin-dashboard.html';
     } else {

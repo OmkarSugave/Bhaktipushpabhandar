@@ -1,10 +1,10 @@
 /* C:\Users\OMKAR\Documents\antigravity\bold-hypatia\js\api-config.js */
 
-// Google Sheets & Cloudinary Configuration - Paste your endpoints here
+// Google Sheets & Cloudinary Configuration - Loaded from config.js
 const apiConfig = {
-  googleAppScriptUrl: "https://script.google.com/macros/s/AKfycbwA7LMwZt8PGt25RbHlKfIe8IXMnn0abtNmVXD9vq_MIMoVydNidpxS5wYm4zLYZHTfBQ/exec",
-  cloudinaryCloudName: "dkso3uujn",
-  cloudinaryUploadPreset: "yy3vdvvt" // MUST be an unsigned upload preset
+  googleAppScriptUrl: typeof config !== 'undefined' ? config.googleAppScriptUrl : "",
+  cloudinaryCloudName: typeof config !== 'undefined' ? config.cloudinaryCloudName : "",
+  cloudinaryUploadPreset: typeof config !== 'undefined' ? config.cloudinaryUploadPreset : "" // MUST be an unsigned upload preset
 };
 
 // Decoupled configuration flags
